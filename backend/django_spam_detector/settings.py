@@ -96,13 +96,38 @@ ML_MODEL_PATH = BASE_DIR / 'modelo_spam_final.joblib'
 
 FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
 
+# Lista de orígenes permitidos
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://localhost:3000",
-    FRONTEND_URL,
 ]
 
+# Agregar FRONTEND_URL si está configurado
+if FRONTEND_URL and FRONTEND_URL not in CORS_ALLOWED_ORIGINS:
+    CORS_ALLOWED_ORIGINS.append(FRONTEND_URL)
+
+# Permitir todos los subdominios de Vercel en producción
+if not DEBUG:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.vercel\.app$",
+    ]
+
+# Solo permitir todos los orígenes en modo DEBUG
 CORS_ALLOW_ALL_ORIGINS = DEBUG
+
+# Configuración adicional de CORS
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 # REST Framework Configuration
 REST_FRAMEWORK = {
