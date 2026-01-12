@@ -253,7 +253,7 @@ export default function SpamDetectorPage() {
                 <Shield className="h-8 w-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Detector de SPAM AI</h1>
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Detector de SPAM </h1>
                 <p className="text-sm md:text-base opacity-90 mt-1">Análisis avanzado con Machine Learning</p>
               </div>
             </div>
